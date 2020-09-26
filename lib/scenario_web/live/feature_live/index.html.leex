@@ -13,8 +13,7 @@
   <thead>
     <tr>
       <th>Feature</th>
-      <th>Scenario</th>
-      <th>Status</th>
+      <th>Description</th>
 
       <th></th>
     </tr>
@@ -23,8 +22,7 @@
     <%= for feature <- @features do %>
       <tr id="feature-<%= feature.id %>">
         <td><%= feature.feature %></td>
-        <td><%= feature.scenario %></td>
-        <td><%= feature.status %></td>
+        <td><%= feature.description %></td>
 
         <td>
           <span><%= live_redirect "Show", to: Routes.feature_show_path(@socket, :show, feature) %></span>

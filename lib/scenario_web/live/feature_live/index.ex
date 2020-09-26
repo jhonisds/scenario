@@ -1,8 +1,8 @@
 defmodule ScenarioWeb.FeatureLive.Index do
   use ScenarioWeb, :live_view
 
-  alias Scenario.Applications
-  alias Scenario.Applications.Feature
+  alias Scenario.Automations
+  alias Scenario.Automations.Feature
 
   @impl true
   def mount(_params, _session, socket) do
@@ -17,7 +17,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
   defp apply_action(socket, :edit, %{"id" => id}) do
     socket
     |> assign(:page_title, "Edit Feature")
-    |> assign(:feature, Applications.get_feature!(id))
+    |> assign(:feature, Automations.get_feature!(id))
   end
 
   defp apply_action(socket, :new, _params) do
@@ -34,13 +34,13 @@ defmodule ScenarioWeb.FeatureLive.Index do
 
   @impl true
   def handle_event("delete", %{"id" => id}, socket) do
-    feature = Applications.get_feature!(id)
-    {:ok, _} = Applications.delete_feature(feature)
+    feature = Automations.get_feature!(id)
+    {:ok, _} = Automations.delete_feature(feature)
 
     {:noreply, assign(socket, :features, list_features())}
   end
 
   defp list_features do
-    Applications.list_features()
+    Automations.list_features()
   end
 end

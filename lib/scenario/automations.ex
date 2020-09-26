@@ -1,12 +1,12 @@
-defmodule Scenario.Applications do
+defmodule Scenario.Automations do
   @moduledoc """
-  The Applications context.
+  The Automations context.
   """
 
   import Ecto.Query, warn: false
   alias Scenario.Repo
 
-  alias Scenario.Applications.Feature
+  alias Scenario.Automations.Feature
 
   @doc """
   Returns the list of features.

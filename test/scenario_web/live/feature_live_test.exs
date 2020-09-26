@@ -3,14 +3,14 @@ defmodule ScenarioWeb.FeatureLiveTest do
 
   import Phoenix.LiveViewTest
 
-  alias Scenario.Applications
+  alias Scenario.Automations
 
-  @create_attrs %{feature: "some feature", scenario: "some scenario", status: "some status"}
-  @update_attrs %{feature: "some updated feature", scenario: "some updated scenario", status: "some updated status"}
-  @invalid_attrs %{feature: nil, scenario: nil, status: nil}
+  @create_attrs %{description: "some description", feature: "some feature"}
+  @update_attrs %{description: "some updated description", feature: "some updated feature"}
+  @invalid_attrs %{description: nil, feature: nil}
 
   defp fixture(:feature) do
-    {:ok, feature} = Applications.create_feature(@create_attrs)
+    {:ok, feature} = Automations.create_feature(@create_attrs)
     feature
   end
 
@@ -26,7 +26,7 @@ defmodule ScenarioWeb.FeatureLiveTest do
       {:ok, _index_live, html} = live(conn, Routes.feature_index_path(conn, :index))
 
       assert html =~ "Listing Features"
-      assert html =~ feature.feature
+      assert html =~ feature.description
     end
 
     test "saves new feature", %{conn: conn} do
@@ -48,7 +48,7 @@ defmodule ScenarioWeb.FeatureLiveTest do
         |> follow_redirect(conn, Routes.feature_index_path(conn, :index))
 
       assert html =~ "Feature created successfully"
-      assert html =~ "some feature"
+      assert html =~ "some description"
     end
 
     test "updates feature in listing", %{conn: conn, feature: feature} do
@@ -70,7 +70,7 @@ defmodule ScenarioWeb.FeatureLiveTest do
         |> follow_redirect(conn, Routes.feature_index_path(conn, :index))
 
       assert html =~ "Feature updated successfully"
-      assert html =~ "some updated feature"
+      assert html =~ "some updated description"
     end
 
     test "deletes feature in listing", %{conn: conn, feature: feature} do
@@ -88,7 +88,7 @@ defmodule ScenarioWeb.FeatureLiveTest do
       {:ok, _show_live, html} = live(conn, Routes.feature_show_path(conn, :show, feature))
 
       assert html =~ "Show Feature"
-      assert html =~ feature.feature
+      assert html =~ feature.description
     end
 
     test "updates feature within modal", %{conn: conn, feature: feature} do
@@ -110,7 +110,7 @@ defmodule ScenarioWeb.FeatureLiveTest do
         |> follow_redirect(conn, Routes.feature_show_path(conn, :show, feature))
 
       assert html =~ "Feature updated successfully"
-      assert html =~ "some updated feature"
+      assert html =~ "some updated description"
     end
   end
 end

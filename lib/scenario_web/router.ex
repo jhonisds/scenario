@@ -18,6 +18,7 @@ defmodule ScenarioWeb.Router do
     pipe_through :browser
 
     live "/", PageLive, :index
+
     live "/features", FeatureLive.Index, :index
     live "/features/new", FeatureLive.Index, :new
     live "/features/:id/edit", FeatureLive.Index, :edit

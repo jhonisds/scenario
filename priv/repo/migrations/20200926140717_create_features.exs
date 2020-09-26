@@ -4,8 +4,7 @@ defmodule Scenario.Repo.Migrations.CreateFeatures do
   def change do
     create table(:features) do
       add :feature, :string
-      add :scenario, :string
-      add :status, :string
+      add :description, :string
 
       timestamps()
     end

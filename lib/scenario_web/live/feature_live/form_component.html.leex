@@ -10,13 +10,9 @@
   <%= text_input f, :feature %>
   <%= error_tag f, :feature %>
 
-  <%= label f, :scenario %>
-  <%= text_input f, :scenario %>
-  <%= error_tag f, :scenario %>
-
-  <%= label f, :status %>
-  <%= text_input f, :status %>
-  <%= error_tag f, :status %>
+  <%= label f, :description %>
+  <%= text_input f, :description %>
+  <%= error_tag f, :description %>
 
   <%= submit "Save", phx_disable_with: "Saving..." %>
 </form>

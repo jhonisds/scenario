@@ -1,7 +1,7 @@
 defmodule ScenarioWeb.FeatureLive.Show do
   use ScenarioWeb, :live_view
 
-  alias Scenario.Applications
+  alias Scenario.Automations
 
   @impl true
   def mount(_params, _session, socket) do
@@ -13,7 +13,7 @@ defmodule ScenarioWeb.FeatureLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:feature, Applications.get_feature!(id))}
+     |> assign(:feature, Automations.get_feature!(id))}
   end
 
   defp page_title(:show), do: "Show Feature"
