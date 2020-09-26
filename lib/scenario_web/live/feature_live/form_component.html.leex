@@ -1,0 +1,22 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "feature-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :feature %>
+  <%= text_input f, :feature %>
+  <%= error_tag f, :feature %>
+
+  <%= label f, :scenario %>
+  <%= text_input f, :scenario %>
+  <%= error_tag f, :scenario %>
+
+  <%= label f, :status %>
+  <%= text_input f, :status %>
+  <%= error_tag f, :status %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

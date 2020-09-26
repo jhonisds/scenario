@@ -1,0 +1,32 @@
+<h1>Show Feature</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal @socket, ScenarioWeb.FeatureLive.FormComponent,
+    id: @feature.id,
+    title: @page_title,
+    action: @live_action,
+    feature: @feature,
+    return_to: Routes.feature_show_path(@socket, :show, @feature) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Feature:</strong>
+    <%= @feature.feature %>
+  </li>
+
+  <li>
+    <strong>Scenario:</strong>
+    <%= @feature.scenario %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @feature.status %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.feature_show_path(@socket, :edit, @feature), class: "button" %></span>
+<span><%= live_redirect "Back", to: Routes.feature_index_path(@socket, :index) %></span>
