@@ -62,3 +62,10 @@ This table shows the status of scenarios.
 | :---------: | ------- | :------------------- |
 |     id      | int     | The id of the status |
 |    name     | varchar | Name of the status   |
+
+## Create Auth
+
+- Add phx_gen_auth to mix: {:phx_gen_auth, "~> 0.5.0"} `mix deps.get`
+- Run `mix phx.gen.auth Accounts User users`
+- Add bcrypt_elixir, comeonin, elixir_make run: `mix deps.get``
+- Run `mix ecto.migrate`
