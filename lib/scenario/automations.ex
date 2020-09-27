@@ -52,7 +52,7 @@ defmodule Scenario.Automations do
   def create_feature(attrs \\ %{}) do
     %Feature{}
     |> Feature.changeset(attrs)
-    |> Repo.insert()
+    |> Repo.insert!()
   end
 
   @doc """

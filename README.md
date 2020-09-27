@@ -25,6 +25,10 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
   mix phx.gen.live Automations Feature features feature:string description:string
 
+  mix phx.gen.live Automations Project projects name:string
+
+  mix phx.gen.live Automations Status status name:string
+
 ```
 
 ## Database

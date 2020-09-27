@@ -19,6 +19,8 @@ defmodule ScenarioWeb.Router do
 
     live "/", PageLive, :index
 
+    # resources "/features", FeatureLive.Index, only: [:index, :new, :edit, :show]
+
     live "/features", FeatureLive.Index, :index
     live "/features/new", FeatureLive.Index, :new
     live "/features/:id/edit", FeatureLive.Index, :edit
