@@ -25,9 +25,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
   mix phx.gen.live Automations Feature features feature:string description:string
 
-  mix phx.gen.live Automations Project projects name:string
+  mix phx.gen.live Origins Project projects name:string
 
-  mix phx.gen.live Automations Status status name:string
+  mix phx.gen.live Conditions Status statuses name:string
 
 ```
 
@@ -54,9 +54,9 @@ This table indicate the origin of the scenarios.
 |     id      | int     | The ID of the project |
 |    name     | varchar | Name of project       |
 
-### Table: status
+### Table: statuses
 
-This table shows the status of scenarios.
+This table shows the statuses of scenarios.
 
 | Column Name | Type    | Description          |
 | :---------: | ------- | :------------------- |

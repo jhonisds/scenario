@@ -6,13 +6,16 @@ defmodule Scenario.Automations.Feature do
     field :description, :string
     field :feature, :string
 
+    belongs_to :project, Scenario.Origins.Project
+
     timestamps()
   end
 
   @doc false
   def changeset(feature, attrs) do
     feature
-    |> cast(attrs, [:feature, :description])
+    |> cast(attrs, [:feature, :description, :project_id])
     |> validate_required([:feature, :description])
+    |> assoc_constraint(:project)
   end
 end

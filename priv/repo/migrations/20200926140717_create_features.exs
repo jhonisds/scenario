@@ -8,6 +8,5 @@ defmodule Scenario.Repo.Migrations.CreateFeatures do
 
       timestamps()
     end
-
   end
 end
