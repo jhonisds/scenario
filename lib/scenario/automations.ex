@@ -21,6 +21,12 @@ defmodule Scenario.Automations do
     Repo.all(Feature)
   end
 
+  def list_features_project do
+    Feature
+    |> Repo.all()
+    |> Repo.preload(:project)
+  end
+
   @doc """
   Gets a single feature.
 
@@ -36,6 +42,10 @@ defmodule Scenario.Automations do
 
   """
   def get_feature!(id), do: Repo.get!(Feature, id)
+
+  def get_feature_load!(id) do
+    Repo.preload(Repo.get!(Feature, id), :project)
+  end
 
   @doc """
   Creates a feature.

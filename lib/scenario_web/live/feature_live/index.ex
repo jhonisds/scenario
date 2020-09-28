@@ -24,6 +24,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
     socket
     |> assign(:page_title, "New Feature")
     |> assign(:feature, %Feature{})
+    |> IO.inspect(label: "NEW")
   end
 
   defp apply_action(socket, :index, _params) do

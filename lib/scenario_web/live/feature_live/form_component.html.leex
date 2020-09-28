@@ -6,13 +6,18 @@
   phx_change: "validate",
   phx_submit: "save" %>
 
-  <%= label f, :feature %>
-  <%= text_input f, :feature %>
-  <%= error_tag f, :feature %>
+<%= label f, :feature %>
+<%= text_input f, :feature %>
+<%= error_tag f, :feature %>
 
-  <%= label f, :description %>
-  <%= text_input f, :description %>
-  <%= error_tag f, :description %>
+<%= label f, :description %>
+<%= text_input f, :description %>
+<%= error_tag f, :description %>
 
-  <%= submit "Save", phx_disable_with: "Saving..." %>
+<%= label f, :project %>
+<%= text_input f, :project_id %>
+<%= select f, :project_id, [timeline: "Timeline", android: "Android"] ,prompt: "Choose a project" %>
+<%= error_tag f, :project_id %>
+
+<%= submit "Save", phx_disable_with: "Saving..." %>
 </form>

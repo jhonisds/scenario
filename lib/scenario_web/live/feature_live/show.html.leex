@@ -1,7 +1,7 @@
 <h1>Show Feature</h1>
 
 <%= if @live_action in [:edit] do %>
-  <%= live_modal @socket, ScenarioWeb.FeatureLive.FormComponent,
+<%= live_modal @socket, ScenarioWeb.FeatureLive.FormComponent,
     id: @feature.id,
     title: @page_title,
     action: @live_action,
@@ -19,6 +19,11 @@
   <li>
     <strong>Description:</strong>
     <%= @feature.description %>
+  </li>
+
+  <li>
+    <strong>Projetc:</strong>
+    <%= @feature.project_id %>
   </li>
 
 </ul>

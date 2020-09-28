@@ -1,7 +1,7 @@
 <h1>Listing Features</h1>
 
 <%= if @live_action in [:new, :edit] do %>
-  <%= live_modal @socket, ScenarioWeb.FeatureLive.FormComponent,
+<%= live_modal @socket, ScenarioWeb.FeatureLive.FormComponent,
     id: @feature.id || :new,
     title: @page_title,
     action: @live_action,
@@ -14,22 +14,24 @@
     <tr>
       <th>Feature</th>
       <th>Description</th>
+      <th>Project</th>
 
       <th></th>
     </tr>
   </thead>
   <tbody id="features">
     <%= for feature <- @features do %>
-      <tr id="feature-<%= feature.id %>">
-        <td><%= feature.feature %></td>
-        <td><%= feature.description %></td>
+    <tr id="feature-<%= feature.id %>">
+      <td><%= feature.feature %></td>
+      <td><%= feature.description %></td>
+      <td><%= feature.project.name %></td>
 
-        <td>
-          <span><%= live_redirect "Show", to: Routes.feature_show_path(@socket, :show, feature) %></span>
-          <span><%= live_patch "Edit", to: Routes.feature_index_path(@socket, :edit, feature) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: feature.id, data: [confirm: "Are you sure?"] %></span>
-        </td>
-      </tr>
+      <td>
+        <span><%= live_redirect "Show", to: Routes.feature_show_path(@socket, :show, feature) %></span>
+        <span><%= live_patch "Edit", to: Routes.feature_index_path(@socket, :edit, feature) %></span>
+        <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: feature.id, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>

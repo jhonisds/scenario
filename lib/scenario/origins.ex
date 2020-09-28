@@ -21,6 +21,17 @@ defmodule Scenario.Origins do
     Repo.all(Project)
   end
 
+  def list_projects_options do
+    Project
+    |> Repo.all()
+    |> project_select_options()
+  end
+
+  def project_select_options(projects) do
+    for project <- projects,
+        do: {project.name, project.id}
+  end
+
   @doc """
   Gets a single project.
 

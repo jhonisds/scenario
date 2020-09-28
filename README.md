@@ -63,6 +63,12 @@ This table shows the statuses of scenarios.
 |     id      | int     | The id of the status |
 |    name     | varchar | Name of the status   |
 
+## Create Migrations
+
+```shell
+  mix ecto.gen.migration add_references_features
+```
+
 ## Create Auth
 
 - Add phx_gen_auth to mix: {:phx_gen_auth, "~> 0.5.0"} `mix deps.get`
