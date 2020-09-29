@@ -15,8 +15,7 @@
 <%= error_tag f, :description %>
 
 <%= label f, :project %>
-<%= text_input f, :project_id %>
-<%= select f, :project_id, [timeline: "Timeline", android: "Android"] ,prompt: "Choose a project" %>
+<%= select f, :project_id, @projects, prompt: "Choose a project" %>
 <%= error_tag f, :project_id %>
 
 <%= submit "Save", phx_disable_with: "Saving..." %>

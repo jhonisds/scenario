@@ -21,15 +21,17 @@ defmodule Scenario.Origins do
     Repo.all(Project)
   end
 
-  def list_projects_options do
-    Project
-    |> Repo.all()
-    |> project_select_options()
-  end
+  @doc """
+  Returns the list of projects by name.
 
-  def project_select_options(projects) do
-    for project <- projects,
-        do: {project.name, project.id}
+  ## Examples
+
+      iex> list_projects_by_name()
+      [%Project{}, ...]
+
+  """
+  def list_projects_by_name do
+    for project <- list_projects(), do: {project.name, project.id}
   end
 
   @doc """

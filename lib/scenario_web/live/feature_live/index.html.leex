@@ -6,6 +6,7 @@
     title: @page_title,
     action: @live_action,
     feature: @feature,
+    projects: @projects,
     return_to: Routes.feature_index_path(@socket, :index) %>
 <% end %>
 
@@ -24,7 +25,7 @@
     <tr id="feature-<%= feature.id %>">
       <td><%= feature.feature %></td>
       <td><%= feature.description %></td>
-      <td><%= feature.project.name %></td>
+      <td><%= feature.project.name %> </td>
 
       <td>
         <span><%= live_redirect "Show", to: Routes.feature_show_path(@socket, :show, feature) %></span>

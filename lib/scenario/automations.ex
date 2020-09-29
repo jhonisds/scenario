@@ -18,10 +18,6 @@ defmodule Scenario.Automations do
 
   """
   def list_features do
-    Repo.all(Feature)
-  end
-
-  def list_features_project do
     Feature
     |> Repo.all()
     |> Repo.preload(:project)
@@ -41,10 +37,10 @@ defmodule Scenario.Automations do
       ** (Ecto.NoResultsError)
 
   """
-  def get_feature!(id), do: Repo.get!(Feature, id)
-
-  def get_feature_load!(id) do
-    Repo.preload(Repo.get!(Feature, id), :project)
+  def get_feature!(id) do
+    Feature
+    |> Repo.get!(id)
+    |> Repo.preload(:project)
   end
 
   @doc """
@@ -62,7 +58,7 @@ defmodule Scenario.Automations do
   def create_feature(attrs \\ %{}) do
     %Feature{}
     |> Feature.changeset(attrs)
-    |> Repo.insert!()
+    |> Repo.insert()
   end
 
   @doc """

@@ -3,10 +3,15 @@ defmodule ScenarioWeb.FeatureLive.Index do
 
   alias Scenario.Automations
   alias Scenario.Automations.Feature
+  alias Scenario.Origins
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, :features, list_features())}
+    # {:ok, assign(socket, :features, list_features())}
+    {:ok,
+     socket
+     |> assign(:features, list_features())
+     |> assign(:projects, list_projects_by_name())}
   end
 
   @impl true
@@ -24,7 +29,6 @@ defmodule ScenarioWeb.FeatureLive.Index do
     socket
     |> assign(:page_title, "New Feature")
     |> assign(:feature, %Feature{})
-    |> IO.inspect(label: "NEW")
   end
 
   defp apply_action(socket, :index, _params) do
@@ -43,5 +47,9 @@ defmodule ScenarioWeb.FeatureLive.Index do
 
   defp list_features do
     Automations.list_features()
+  end
+
+  defp list_projects_by_name do
+    Origins.list_projects_by_name()
   end
 end
