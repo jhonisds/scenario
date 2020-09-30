@@ -11,7 +11,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
     {:ok,
      socket
      |> assign(:features, list_features())
-     |> assign(:projects, list_projects_by_name())}
+     |> assign(:projects, list_projects())}
   end
 
   @impl true
@@ -49,7 +49,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
     Automations.list_features()
   end
 
-  defp list_projects_by_name do
+  defp list_projects do
     Origins.list_projects_by_name()
   end
 end
