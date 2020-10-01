@@ -2,11 +2,13 @@ defmodule Scenario.Automations.Feature do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Scenario.Origins.Project
+
   schema "features" do
     field :description, :string
     field :feature, :string
 
-    belongs_to :project, Scenario.Origins.Project
+    belongs_to :project, Project
 
     timestamps()
   end

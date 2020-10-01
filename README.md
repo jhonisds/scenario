@@ -29,6 +29,8 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
   mix phx.gen.live Conditions Status statuses name:string
 
+  # example ->  Boats Boat boats model:string...
+
 ```
 
 ## Database
