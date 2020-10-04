@@ -30,6 +30,7 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   mix phx.gen.live Conditions Status statuses name:string
 
   # example ->  Boats Boat boats model:string...
+  # sample: mix phx.gen.context Servers Server servers name:string status:string deploy_count:integer size:float framework:string git_repo:string last_commit_id:string last_commit_message:string
 
 ```
 
