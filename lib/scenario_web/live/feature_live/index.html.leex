@@ -10,6 +10,10 @@
     return_to: Routes.feature_index_path(@socket, :index) %>
 <% end %>
 
+<form phx-change="search">
+  <input type="text" name="query" value="" placeholder="Search..." />
+</form>
+
 <table>
   <thead>
     <tr>
