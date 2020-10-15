@@ -10,7 +10,18 @@ defmodule Scenario.MixProject do
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+
+      # Docs
+      name: "Scenario",
+      source_url: "https://github.com/jhonisds/scenario",
+      # homepage_url: "http://YOUR_PROJECT_HOMEPAGE",
+      docs: [
+        # The main page in the docs
+        main: "Scenario",
+        # logo: "path/to/logo.png",
+        extras: ["README.md"]
+      ]
     ]
   end
 
@@ -47,7 +58,8 @@ defmodule Scenario.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.4"}
+      {:credo, "~> 1.4"},
+      {:ex_doc, "~> 0.23.0"}
     ]
   end
 

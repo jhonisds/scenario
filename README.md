@@ -79,5 +79,10 @@ This table shows the statuses of scenarios.
 
 - Add phx_gen_auth to mix: {:phx_gen_auth, "~> 0.5.0"} `mix deps.get`
 - Run `mix phx.gen.auth Accounts User users`
-- Add bcrypt_elixir, comeonin, elixir_make run: `mix deps.get``
+- Add bcrypt_elixir, comeonin, elixir_make run: `mix deps.get`
 - Run `mix ecto.migrate`
+
+## Docs
+
+- Generate docs `mix docs`
+- Open Documentation `open doc/index.html`
