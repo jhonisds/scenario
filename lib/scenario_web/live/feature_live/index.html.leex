@@ -10,15 +10,21 @@
     return_to: Routes.feature_index_path(@socket, :index) %>
 <% end %>
 
-<form phx-submit="zip-search">
-  <input type="text" name="zip" value="<%= @zip %>" placeholder="Search..."  autofocus autocomplete="off" />
+<form phx-submit="feature-search">
+  <input type="text" name="search" value="<%= @search %>" placeholder="Search..."  autofocus autocomplete="off"
+  <%= if @loading, do: "readonly" %> />
 
-  <button type="submit">
+  <%# <button type="submit"> %>
     <%# <img src="images/search.svg" alt=""> %>
-  </button>
-
-
+  <%# </button> %>
 </form>
+
+<%= if @loading do %>
+  <div class="loader">
+    Loading features...
+  </div>
+<% end %>
+
 
 <table>
   <thead>

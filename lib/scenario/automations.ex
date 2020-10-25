@@ -109,6 +109,8 @@ defmodule Scenario.Automations do
   end
 
   def search_feature_by_name(feature) do
+    :timer.sleep(1000)
+
     list_features()
     |> Enum.filter(&(&1.feature == feature))
   end

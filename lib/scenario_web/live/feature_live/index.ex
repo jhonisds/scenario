@@ -12,7 +12,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
      socket
      |> assign(:features, list_features())
      |> assign(:projects, list_projects())
-     |> assign(zip: "", features: list_features())}
+     |> assign(search: "", features: list_features(), loading: false)}
   end
 
   @impl true
@@ -46,16 +46,38 @@ defmodule ScenarioWeb.FeatureLive.Index do
     {:noreply, assign(socket, :features, list_features())}
   end
 
-  def handle_event("zip-search", %{"zip" => feature}, socket) do
-    IO.inspect(feature)
+  def handle_event("feature-search", %{"search" => feature}, socket) do
+    send(self(), {:run_feature_search, feature})
 
     socket =
       assign(socket,
-        zip: feature,
-        features: search_feature(feature)
+        search: feature,
+        features: [],
+        loading: true
       )
 
     {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info({:run_feature_search, feature}, socket) do
+    case search_feature(feature) do
+      [] ->
+        socket =
+          socket
+          |> put_flash(:error, "Feature: \"#{feature}\" not found.")
+          |> assign(features: list_features(), loading: false)
+
+        {:noreply, socket}
+
+      feature ->
+        socket =
+          socket
+          |> clear_flash()
+          |> assign(features: feature, loading: false)
+
+        {:noreply, socket}
+    end
   end
 
   defp list_features do
