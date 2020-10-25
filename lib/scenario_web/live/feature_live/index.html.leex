@@ -19,6 +19,15 @@
   <%# </button> %>
 </form>
 
+<form phx-submit="" phx-change="suggest-description">
+  <input type="text", name="description" value="<%= @description %>" placeholder="Description" autocomplete="off"
+    <%= if @loading, do: "readonly" %> />
+</form>
+
+<div>
+  <%= inspect @matches %>
+</div>
+
 <%= if @loading do %>
   <div class="loader">
     Loading features...

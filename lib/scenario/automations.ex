@@ -115,6 +115,10 @@ defmodule Scenario.Automations do
     |> Enum.filter(&(&1.feature == feature))
   end
 
+  def list_description do
+    for project <- list_features(), do: project.description |> to_string()
+  end
+
   def suggest(""), do: []
 
   def suggest(prefix) do
@@ -122,20 +126,6 @@ defmodule Scenario.Automations do
   end
 
   defp has_prefix?(description, prefix) do
-    IO.inspect(description)
     String.starts_with?(String.downcase(description), String.downcase(prefix))
-  end
-
-  def list_description do
-    for project <- list_features(), do: project.description |> to_string()
-  end
-
-  def list_des do
-    [
-      "Abilene, TX",
-      "Addison, IL",
-      "Ocklahoam",
-      "OK"
-    ]
   end
 end
