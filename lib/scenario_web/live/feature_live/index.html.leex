@@ -10,14 +10,20 @@
     return_to: Routes.feature_index_path(@socket, :index) %>
 <% end %>
 
-<form phx-change="search">
-  <input type="text" name="query" value="" placeholder="Search..." />
+<form phx-submit="zip-search">
+  <input type="text" name="zip" value="<%= @zip %>" placeholder="Search..."  autofocus autocomplete="off" />
+
+  <button type="submit">
+    <%# <img src="images/search.svg" alt=""> %>
+  </button>
+
+
 </form>
 
 <table>
   <thead>
     <tr>
-      <th>Feature</th>
+      <th>Feature </th>
       <th>Description</th>
       <th>Project</th>
 

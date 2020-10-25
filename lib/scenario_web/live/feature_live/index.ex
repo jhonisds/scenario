@@ -11,7 +11,8 @@ defmodule ScenarioWeb.FeatureLive.Index do
     {:ok,
      socket
      |> assign(:features, list_features())
-     |> assign(:projects, list_projects())}
+     |> assign(:projects, list_projects())
+     |> assign(zip: "", features: list_features())}
   end
 
   @impl true
@@ -45,11 +46,28 @@ defmodule ScenarioWeb.FeatureLive.Index do
     {:noreply, assign(socket, :features, list_features())}
   end
 
+  def handle_event("zip-search", %{"zip" => feature}, socket) do
+    IO.inspect(feature)
+
+    socket =
+      assign(socket,
+        zip: feature,
+        features: search_feature(feature)
+      )
+
+    {:noreply, socket}
+  end
+
   defp list_features do
     Automations.list_features()
   end
 
   defp list_projects do
     Origins.list_projects_by_name()
+  end
+
+  defp search_feature(feature) do
+    feature
+    |> Automations.search_feature_by_name()
   end
 end

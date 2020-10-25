@@ -107,4 +107,9 @@ defmodule Scenario.Automations do
   def change_feature(%Feature{} = feature, attrs \\ %{}) do
     Feature.changeset(feature, attrs)
   end
+
+  def search_feature_by_name(feature) do
+    list_features()
+    |> Enum.filter(&(&1.feature == feature))
+  end
 end
