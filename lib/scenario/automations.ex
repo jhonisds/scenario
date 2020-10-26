@@ -115,6 +115,13 @@ defmodule Scenario.Automations do
     |> Enum.filter(&(&1.feature == feature))
   end
 
+  def search_feature_by_description(description) do
+    :timer.sleep(1000)
+
+    list_features()
+    |> Enum.filter(&(&1.description == description))
+  end
+
   def list_description do
     for project <- list_features(), do: project.description |> to_string()
   end

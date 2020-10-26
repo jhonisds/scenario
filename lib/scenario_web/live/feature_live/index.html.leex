@@ -19,21 +19,23 @@
   <%# </button> %>
 </form>
 
-<form phx-submit="" phx-change="suggest-description">
+<form phx-submit="description-search" phx-change="suggest-description">
   <input type="text" name="prefix" value="<%= @description %>" placeholder="Description" autocomplete="off"
+  list="matches" phx-debounce="1000"
     <%= if @loading, do: "readonly" %> />
 </form>
 
-<div>
-  <%= inspect @matches %>
-</div>
+<datalist id="matches">
+  <%= for match <- @matches do %>
+    <option value="<%= match %>"> <%= match %></option>
+  <% end %>
+</datalist>
 
 <%= if @loading do %>
   <div class="loader">
     Loading features...
   </div>
 <% end %>
-
 
 <table>
   <thead>

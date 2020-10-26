@@ -66,7 +66,20 @@ defmodule ScenarioWeb.FeatureLive.Index do
   end
 
   def handle_event("suggest-description", %{"prefix" => prefix}, socket) do
-    socket = assign(socket, matches: Automations.suggest(prefix))
+    socket = assign(socket, matches: suggest_description(prefix))
+    {:noreply, socket}
+  end
+
+  def handle_event("description-search", %{"prefix" => description}, socket) do
+    send(self(), {:run_description_search, description})
+
+    socket =
+      assign(socket,
+        description: description,
+        features: [],
+        loading: true
+      )
+
     {:noreply, socket}
   end
 
@@ -77,6 +90,26 @@ defmodule ScenarioWeb.FeatureLive.Index do
         socket =
           socket
           |> put_flash(:error, "Feature: \"#{feature}\" not found.")
+          |> assign(features: list_features(), loading: false)
+
+        {:noreply, socket}
+
+      feature ->
+        socket =
+          socket
+          |> clear_flash()
+          |> assign(features: feature, loading: false)
+
+        {:noreply, socket}
+    end
+  end
+
+  def handle_info({:run_description_search, description}, socket) do
+    case search_description(description) do
+      [] ->
+        socket =
+          socket
+          |> put_flash(:error, "Feature: \"#{description}\" not found.")
           |> assign(features: list_features(), loading: false)
 
         {:noreply, socket}
@@ -102,5 +135,15 @@ defmodule ScenarioWeb.FeatureLive.Index do
   defp search_feature(feature) do
     feature
     |> Automations.search_feature_by_name()
+  end
+
+  defp search_description(description) do
+    description
+    |> Automations.search_feature_by_description()
+  end
+
+  defp suggest_description(prefix) do
+    prefix
+    |> Automations.suggest()
   end
 end
