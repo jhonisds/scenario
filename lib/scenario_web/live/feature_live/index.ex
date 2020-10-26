@@ -15,9 +15,9 @@ defmodule ScenarioWeb.FeatureLive.Index do
      |> assign(
        search: "",
        features: list_features(),
-       loading: false,
        description: "",
-       matches: []
+       matches: [],
+       loading: false
      )}
   end
 
@@ -65,8 +65,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
     {:noreply, socket}
   end
 
-  def handle_event("suggest-description", %{"description" => prefix}, socket) do
-    IO.inspect(prefix)
+  def handle_event("suggest-description", %{"prefix" => prefix}, socket) do
     socket = assign(socket, matches: Automations.suggest(prefix))
     {:noreply, socket}
   end
