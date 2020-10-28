@@ -9,6 +9,24 @@
     return_to: Routes.project_index_path(@socket, :index) %>
 <% end %>
 
+<form phx-submit="name-search" phx-change="suggest-name">
+  <input type="text" name="prefix" value="<%= @name %>" placeholder="Name" autocomplete="off"
+  list="matches" phx-debounce="1000"
+    <%= if @loading, do: "readonly" %> />
+</form>
+
+<datalist id="matches">
+  <%= for match <- @matches do %>
+    <option value="<%= match %>"> <%= match %></option>
+  <% end %>
+</datalist>
+
+<%= if @loading do %>
+  <div class="loader">
+    Loading features...
+  </div>
+<% end %>
+
 <table>
   <thead>
     <tr>

@@ -114,4 +114,36 @@ defmodule Scenario.Origins do
   def change_project(%Project{} = project, attrs \\ %{}) do
     Project.changeset(project, attrs)
   end
+
+  @doc """
+  Returns an single project by name.
+
+  ## Examples
+
+      iex> search_project(name)
+      %Project{}
+
+  """
+  def search_project(name) do
+    :timer.sleep(1000)
+
+    list_projects()
+    |> Enum.filter(&(&1.name == name))
+
+    # |> Enum.filter(fn x -> x.name == name end)
+  end
+
+  def list_by_name do
+    for project <- list_projects(), do: project.name
+  end
+
+  def suggest(""), do: []
+
+  def suggest(prefix) do
+    Enum.filter(list_by_name(), &has_prefix?(&1, prefix))
+  end
+
+  defp has_prefix?(name, prefix) do
+    String.starts_with?(String.downcase(name), String.downcase(prefix))
+  end
 end

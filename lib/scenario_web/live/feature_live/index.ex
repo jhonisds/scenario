@@ -109,7 +109,7 @@ defmodule ScenarioWeb.FeatureLive.Index do
       [] ->
         socket =
           socket
-          |> put_flash(:error, "Feature: \"#{description}\" not found.")
+          |> put_flash(:error, "Description: \"#{description}\" not found.")
           |> assign(features: list_features(), loading: false)
 
         {:noreply, socket}
