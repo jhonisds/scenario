@@ -21,7 +21,9 @@ defmodule Scenario.MixProject do
         main: "Scenario",
         # logo: "path/to/logo.png",
         extras: ["README.md"]
-      ]
+      ],
+      # Test coverage
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -59,7 +61,8 @@ defmodule Scenario.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.4"},
-      {:ex_doc, "~> 0.23.0"}
+      {:ex_doc, "~> 0.23.0"},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 

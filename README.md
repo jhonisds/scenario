@@ -86,3 +86,9 @@ This table shows the statuses of scenarios.
 
 - Generate docs `mix docs`
 - Open Documentation `open doc/index.html`
+
+## Coverage
+
+- add dependencie `excoverage`
+- run `MIX_ENV=text mix coveralls.html`
+- open html report using: open cover/excoveralls.html
